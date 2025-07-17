@@ -75,11 +75,10 @@ public class ClickHouse2OBTest extends OceanBaseMySQLTestBase {
         verifyClickHouseConnection();
         LOG.info("Containers are started.");
     }
-
     private static void verifyClickHouseConnection() throws SQLException {
         String jdbcUrl =
                 String.format(
-                        "jdbc:clickhouse://localhost:8123/default?user=%s&password=%s",
+                        "jdbc:clickhouse://localhost:8123/default?user=%s&password=%s&serverTimezone=Asia/Shanghai&useSSL=false",
                         CLICKHOUSE_USER, CLICKHOUSE_PASSWORD);
 
         try (Connection conn = DriverManager.getConnection(jdbcUrl);
